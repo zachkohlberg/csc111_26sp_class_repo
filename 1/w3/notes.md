@@ -122,5 +122,28 @@ a.sayHello();
 Variables and methods can belong to either the class or every instance of the
 class.
 
+## Encapsulation
 
+access modifiers
+
+- `public`: accessible from anywhere, no restrictions
+- `private`: only accessible from its class, very restrictive
+- `protected`: can ignore for now, more relevant with inheritance
+- none: referred to as "package private"
+
+encapsulation: data hiding
+
+- controlling what code has access to data lets us make guarantees about
+  that data
+- in OOP we often want a class to be responsible for ensuring it's always
+  in a valid state, meaning its instance variables are all equal to values
+  that make sense
+- if you control access to data, then you can ensure that data never changes
+- can enforce invariants (properties that must always be true)
+
+public API vs private implementation
+
+- API: Application Programming Interface
+- if your code will be used by other programmers, then you want to establish
+  a public API that rarely/never changes and keep the rest hidden/private
 

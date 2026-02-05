@@ -36,7 +36,7 @@ class Rectangle {
 
     // check for an intersection between two rectangles
     // this could be an instance method, but we're making it static
-    boolean checkOverlap(Rectangle a, Rectangle b) {
+    static boolean checkOverlap(Rectangle a, Rectangle b) {
         // check for all the ways they could not overlap
         if (b.x + b.width < a.x) {
             return false;
