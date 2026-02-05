@@ -10,4 +10,55 @@
 //     withdraw(Check): boolean subtracts the check’s amount from the account’s balance unless the amount is greater than the balance, returns whether the withdraw succeeded
 //     format(): String returns a string with the account name and balance formatted like this: “Alice: $100.05”
 
+public class Account {
+    // instance variables
 
+    private String name;
+    private int balance;
+
+    // constructors
+
+    // to avoid the need for "this."
+    // public Account(String initName, int initBalance) {
+
+    public Account(String name, int balance) {
+
+        // this.name is the instance variable name
+        // name is the parameter variable name
+        // this. would be unnecessary if we changed the parameter names to differ from the instance variables
+        this.name = name;
+        this.balance = balance;
+
+        // to avoid the need for "this.":
+        // name = initName;
+        // balance = initBalance;
+    }
+
+    // methods
+
+    public String getName() {
+        return name;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void deposit(Check check) {
+        balance += check.getAmount();
+    }
+
+    public boolean withdraw(Check check) {
+        if (check.getAmount() > balance) {
+            // not enough balance to withdraw
+            return false;
+        } else {
+            balance -= check.getAmount();
+            return true;
+        }
+    }
+
+    public String format() {
+        return String.format("%s: $%d.%02d", name, balance / 100, balance % 100);
+    }
+}
