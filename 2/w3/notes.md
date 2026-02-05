@@ -114,3 +114,28 @@ Dog a = ...;
 a.sayHello();
 ```
 
+## Encapsulation
+
+access modifiers
+
+- `public`: unrestricted, can be accessed from anywhere
+- `private`: very restrictive, can only be accessed from its class
+- `protected`: unlikely to come up in csc111, deals with inheritance
+- none: "package private"
+
+encapsulation: data hiding
+
+- allows you to create immutable data types or make some properties
+  immutable by restricting access to them
+- in OOP, classes are responsible for maintaining a valid state,
+  guaranteeing their invariants are always true
+
+public API vs private implementation
+
+- API: Application Programming Interface
+- if your code is used by other programmers, you want to establish a
+  public API that rarely/never changes
+- the private implementation (private methods/variables, implementation
+  of public methods, etc.) is not necessary for someone to use your
+  public API
+
