@@ -61,4 +61,10 @@ public class Account {
     public String format() {
         return String.format("%s: $%d.%02d", name, balance / 100, balance % 100);
     }
+
+    // if we named it "toString" rather than format, then it would be used
+    // automatically whenever we need to convert to a string
+    public String toString() {
+        return String.format("%s: $%d.%02d", name, balance / 100, balance % 100);
+    }
 }
