@@ -49,4 +49,9 @@ public class Account {
     public String format() {
         return String.format("%s: $%d.%02d", name, balance / 100, balance % 100);
     }
+
+    // adding a toString makes it more convenient to print Account
+    public String toString() {
+        return String.format("%s: $%d.%02d", name, balance / 100, balance % 100);
+    }
 }
