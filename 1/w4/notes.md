@@ -55,3 +55,18 @@ there are a few ways to respond to exceptions
   - even if you can't recover from an exception, you can at least print a more
     user-friendly error message and fail gracefully instead of crashing with a
     stack trace
+
+## try-catch
+
+format:
+
+```java
+try {
+    // code that may throw an exception
+} catch (ExceptionType1 name) {
+    // code to run instead of ExceptionType1 occurs
+} catch (ExceptionType2 name) {
+    // ...
+} // and so on
+```
+
