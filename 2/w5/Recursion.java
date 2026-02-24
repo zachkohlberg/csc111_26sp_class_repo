@@ -24,4 +24,12 @@ public class Recursion {
             // do nothing
         }
     }
+
+    // short version:
+    // public static void countUpRec(int start) {
+    //     System.out.println(start);
+    //     if (start < 10) {
+    //         countUpRec(start + 1);
+    //     }
+    // }
 }
