@@ -58,9 +58,19 @@ public class Drawing {
 
     // feel free to change the parameters, but don't delete the Graphics or you
     // won't be able to draw anything!
-    public static void fractal(Graphics g, int x1, int y1, int x2, int y2) {
-        // rewrite this function to recursively draw your fractal
-        g.drawLine(x1, y1, x2, y2);
+    public static void fractal(Graphics g, int level, int x1, int y1, int x2, int y2, int x3, int y3) {
+        // in case you forget how to draw lines:
+        // g.drawLine(x1, y1, x2, y2);
+        if (level == 0) {
+            // base case
+
+            // TODO: draw the triangle
+        } else {
+            // recursive case
+
+            // TODO: find the midpoints
+            // TODO: draw the fractals
+        }
     }
 }
 
