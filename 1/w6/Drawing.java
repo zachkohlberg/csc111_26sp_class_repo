@@ -71,10 +71,15 @@ public class Drawing {
             // calculate midpoints
             int x12 = (x1 + x2) / 2;
             int y12 = (y1 + y2) / 2;
-            int x23 = (x3 + x2) / 2;
-            int y23 = (y3 + y2) / 2;
             int x13 = (x1 + x3) / 2;
             int y13 = (y1 + y3) / 2;
+            int x23 = (x3 + x2) / 2;
+            int y23 = (y3 + y2) / 2;
+            // version skewed towards p3
+            // int x23 = (2 * x3 + x2) / 3;
+            // int y23 = (2 * y3 + y2) / 3;
+            // int x13 = (x1 + 2 * x3) / 3;
+            // int y13 = (y1 + 2 * y3) / 3;
 
             // draw smaller fractals
             fractal(g, level - 1, x1, y1, x12, y12, x13, y13);
