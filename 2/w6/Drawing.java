@@ -29,7 +29,7 @@ public class Drawing {
                         g.setColor(Color.WHITE);
 
                         // call your fractal function here
-                        fractal(g, 0, 0, w, h);
+                        fractal(g, 7, 0, 799, 400, 0, 799, 799);
                     }
                 };
         // you can change the bg color here
@@ -59,17 +59,28 @@ public class Drawing {
     // feel free to change the parameters, but don't delete the Graphics or you
     // won't be able to draw anything!
     public static void fractal(Graphics g, int level, int x1, int y1, int x2, int y2, int x3, int y3) {
-        // in case you forget how to draw lines:
-        // g.drawLine(x1, y1, x2, y2);
         if (level == 0) {
             // base case
 
-            // TODO: draw the triangle
+            // draw a triangle
+            g.drawLine(x1, y1, x2, y2);
+            g.drawLine(x1, y1, x3, y3);
+            g.drawLine(x3, y3, x2, y2);
         } else {
             // recursive case
 
-            // TODO: find the midpoints
-            // TODO: draw the fractals
+            // calculate midpoints
+            int x12 = (x1 + x2) / 2;
+            int y12 = (y1 + y2) / 2;
+            int x13 = (x1 + 2 * x3) / 3;
+            int y13 = (y1 + 2 * y3) / 3;
+            int x23 = (2 * x3 + x2) / 3;
+            int y23 = (2 * y3 + y2) / 3;
+
+            // draw the fractals
+            fractal(g, level - 1, x1, y1, x12, y12, x13, y13);
+            fractal(g, level - 1, x12, y12, x2, y2, x23, y23);
+            fractal(g, level - 1, x13, y13, x23, y23, x3, y3);
         }
     }
 }
