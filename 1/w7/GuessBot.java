@@ -15,8 +15,8 @@ public class GuessBot {
         System.out.println(secret);
 
         // use some algorithm to figure out the number
+        // NOTE: added arguments here
         int guess = findSecret(secret, SecretNumber.MIN_VALUE, SecretNumber.MAX_VALUE);
-        // int guess = findSecret(secret, 1, 1_000_000_000);
 
         // guess the number once we've figured it out
         secret.guessSecret(guess);
@@ -28,8 +28,11 @@ public class GuessBot {
         System.out.println(secret);
     }
 
+    // NOTE: added parameters for min/max
     static int findSecret(SecretNumber secret, int min, int max) {
-        // base case
+        // NOTE: deleted loop, replace with binary search code
+
+        // base case: min = max, return min or max
         if (min == max) {
             return min;
         }
@@ -37,10 +40,10 @@ public class GuessBot {
         int mid = (min + max) / 2;
 
         if (secret.isGreaterThan(mid)) {
-            // recursive case (upper)
+            // recursive case 1: number > mid, search mid + 1 to max
             return findSecret(secret, mid + 1, max);
         } else {
-            // recursive case (lower)
+            // recursive case 2: number <= mid, search min to mid
             return findSecret(secret, min, mid);
         }
     }
