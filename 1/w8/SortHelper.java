@@ -14,9 +14,9 @@ public class SortHelper {
     }
 
     public static boolean isSorted(int[] a) {
-        for (int i = 0; i < array.length - 1; i++) {
+        for (int i = 0; i < a.length - 1; i++) {
             // check if element violates sorted property
-            if (array[i] > array[i + 1]) {
+            if (a[i] > a[i + 1]) {
                 return false;
             }
             // longer version:
