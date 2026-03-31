@@ -3,8 +3,8 @@
 public class ArrayList<E> {
     public static final int DEFAULT_CAPACITY = 10;
 
-    E[] data;
-    int size;
+    private E[] data;
+    private int size;
 
     @SuppressWarnings("unchecked")
     public ArrayList() {

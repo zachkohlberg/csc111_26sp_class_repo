@@ -1,8 +1,8 @@
 public class IntArrayList {
     public static final int DEFAULT_CAPACITY = 10;
 
-    int[] data;
-    int size;
+    private int[] data;
+    private int size;
 
     public IntArrayList() {
         // make array with default size
