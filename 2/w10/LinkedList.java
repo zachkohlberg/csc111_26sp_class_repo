@@ -55,7 +55,6 @@ public class LinkedList<E> {
         }
 
         size += 1;
-
     }
 
     public E removeAt(int index) {
@@ -67,7 +66,7 @@ public class LinkedList<E> {
         E element;
 
         if (index == 0) {
-            e = head.data;
+            element = head.data;
             head = head.next;
         } else {
             // start at head node
@@ -77,7 +76,8 @@ public class LinkedList<E> {
                 n = n.next;
             }
 
-            e = n.data;
+            // need to save our element before removing the node
+            element = n.next.data;
             // skip over the next node
             n.next = n.next.next;
         }
@@ -87,13 +87,30 @@ public class LinkedList<E> {
     }
 
     public int indexOf(E element) {
+        // TODO: try implementing this on your own
         // traverse list, but otherwise just a linear search
     }
 
     public void add(E element) {
+        // this is inefficient, O(n)
+        insert(size, element);
+
+        // if we maintained a pointer to the tail node, then this would be O(1)
+        // we're not making any such optimizations for our first linked list,
+        // but we may revisit this and make some improvements
     }
 
     public boolean remove(E element) {
+        // this code only uses operations defined in our list ADT, so it works
+        // for both this linked list implementation and the other array list
+        // implementation
+        int index = indexOf(element);
+        if (index == -1) {
+            return false;
+        } else {
+            removeAt(index);
+            return true;
+        }
     }
 
     private class Node {
