@@ -56,6 +56,8 @@ public class Drawing {
         new Drawing();
     }
 
+    // Problem: Draw the sierpinski triangle fractal using a stack rather than
+    // a recursive function.
     public static void fractal(Graphics g, Triangle tri) {
         ArrayStack<Triangle> stack = new ArrayStack<>();
         stack.push(tri);
