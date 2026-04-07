@@ -20,7 +20,7 @@ public class ArrayStack<E> {
     public E pop() {
         // can't remove from an empty stack
         if (isEmpty()) {
-            throw EmptyStackException();
+            throw new EmptyStackException();
         }
 
         size -= 1;
@@ -32,7 +32,7 @@ public class ArrayStack<E> {
     public E peek() {
         // can't peek at an empty stack
         if (isEmpty()) {
-            throw EmptyStackException();
+            throw new EmptyStackException();
         }
 
         return data[size - 1];
