@@ -13,6 +13,7 @@ public class ArrayStack<E> {
     }
 
     public void push(E element) {
+        ensureCapacity();
         data[size] = element;
         size += 1;
     }

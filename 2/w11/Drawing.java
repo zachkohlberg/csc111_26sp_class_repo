@@ -29,7 +29,7 @@ public class Drawing {
                         g.setColor(Color.WHITE);
 
                         // call your fractal function here
-                        fractal(g, 7, 0, 799, 400, 0, 799, 799);
+                        fractal(g, new Triangle(7, 0, 799, 400, 0, 799, 799));
                     }
                 };
         // you can change the bg color here
@@ -66,16 +66,33 @@ public class Drawing {
             // remove triangle from top of the stack
             Triangle t = stack.pop();
 
-            // TODO: draw triangle if its level is zero
-            // TODO: push three smaller triangles with level - 1 if its level is > 0
+            if (t.level == 0) {
+                // draw triangle if its level is zero
+                g.drawLine(t.x1, t.y1, t.x2, t.y2);
+                g.drawLine(t.x1, t.y1, t.x3, t.y3);
+                g.drawLine(t.x3, t.y3, t.x2, t.y2);
+            } else {
+                // push three smaller triangles with level - 1 if its level is > 0
 
-            // midpoint calculations from last time we did this
-            int x12 = (t.x1 + t.x2) / 2;
-            int y12 = (t.y1 + t.y2) / 2;
-            int x13 = (t.x1 + 2 * t.x3) / 3;
-            int y13 = (t.y1 + 2 * t.y3) / 3;
-            int x23 = (2 * t.x3 + t.x2) / 3;
-            int y23 = (2 * t.y3 + t.y2) / 3;
+                // midpoint calculations from last time we did this
+                int x12 = (t.x1 + t.x2) / 2;
+                int y12 = (t.y1 + t.y2) / 2;
+                int x13 = (t.x1 + t.x3) / 2;
+                int y13 = (t.y1 + t.y3) / 2;
+                int x23 = (t.x3 + t.x2) / 2;
+                int y23 = (t.y3 + t.y2) / 2;
+
+                // level - 1
+                // (x1, y1)
+                // (x12, y12)
+                // (x13, y13)
+                stack.push(new Triangle(t.level - 1, t.x1, t.y1, x12, y12, x13, y13));
+                stack.push(new Triangle(t.level - 1, x12, y12, t.x2, t.y2, x23, y23));
+                stack.push(new Triangle(t.level - 1, x13, y13, x23, y23, t.x3, t.y3));
+
+                // creating a triangle with level 7 and points (0, 799), (400, 0), (799, 799)
+                // new Triangle(7, 0, 799, 400, 0, 799, 799);
+            }
         }
     }
 

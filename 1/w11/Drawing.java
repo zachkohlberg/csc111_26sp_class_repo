@@ -65,6 +65,7 @@ public class Drawing {
         while (!stack.isEmpty()) {
             // remove triangle from top of the stack
             Triangle t = stack.pop();
+            System.out.printf("triangle[%d, (%d, %d), (%d, %d), (%d, %d)]\n", t.level, t.x1, t.y1, t.x2, t.y2, t.x3, t.y3);
 
             if (t.level == 0) {
                 // draw triangle if its level is zero
@@ -82,9 +83,9 @@ public class Drawing {
                 int x23 = (t.x3 + t.x2) / 3;
                 int y23 = (t.y3 + t.y2) / 3;
 
-                stack.push(new Triangle(level - 1, t.x1, t.y1, x12, y12, x13, y13));
-                stack.push(new Triangle(level - 1, x12, y12, t.x2, t.y2, x23, y23));
-                stack.push(new Triangle(level - 1, x13, y13, x23, y23, t.x3, t.y3));
+                stack.push(new Triangle(t.level - 1, t.x1, t.y1, x12, y12, x13, y13));
+                stack.push(new Triangle(t.level - 1, x12, y12, t.x2, t.y2, x23, y23));
+                stack.push(new Triangle(t.level - 1, x13, y13, x23, y23, t.x3, t.y3));
             }
         }
     }
