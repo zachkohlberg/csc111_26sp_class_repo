@@ -13,6 +13,8 @@ public class ArrayStack<E> {
     }
 
     public void push(E element) {
+        // fixed: need to call ensureCapacity before adding to grow the array
+        ensureCapacity();
         data[size] = element;
         size += 1;
     }
@@ -20,6 +22,7 @@ public class ArrayStack<E> {
     public E pop() {
         // can't remove from an empty stack
         if (isEmpty()) {
+            // fixed: missing new keyword to construct exception
             throw new EmptyStackException();
         }
 
@@ -32,6 +35,7 @@ public class ArrayStack<E> {
     public E peek() {
         // can't peek at an empty stack
         if (isEmpty()) {
+            // fixed: missing new keyword to construct exception
             throw new EmptyStackException();
         }
 
