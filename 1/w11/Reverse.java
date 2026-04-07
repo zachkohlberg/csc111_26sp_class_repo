@@ -10,10 +10,35 @@ public class Reverse {
     public static String reverse(String s) {
         ArrayStack<Character> stack = new ArrayStack<>();
 
-        // TODO: push each char onto stack
+        // a good first step is to just print the elements so you can tell
+        // whether the loop was coded correctly
+        // for (int i = 0; i < s.length(); i++) {
+        //     System.out.println(s.charAt(i));
+        // }
+
+        // iterate over characters in s
+        for (int i = 0; i < s.length(); i++) {
+            // get a character from the string
+            char c = s.charAt(i);
+            // push it onto the stack
+            stack.push(c);
+        }
 
         String r = "";
-        // TODO: pop each char off stack and add to string
+
+        // a good first step is to just print the elements so you can tell
+        // whether the loop was coded correctly
+        // while (!stack.isEmpty()) {
+        //     System.out.println(stack.pop());
+        // }
+
+        // repeat until stack is empty
+        while (!stack.isEmpty()) {
+            // get a character from the stack
+            char c = stack.pop();
+            // add character to end of the string
+            r += c;
+        }
 
         return r;
     }

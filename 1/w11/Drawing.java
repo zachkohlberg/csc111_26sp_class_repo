@@ -29,7 +29,7 @@ public class Drawing {
                         g.setColor(Color.WHITE);
 
                         // call your fractal function here
-                        fractal(g, 7, 0, 799, 400, 0, 799, 799);
+                        fractal(g, 4, 0, 799, 400, 0, 799, 799);
                     }
                 };
         // you can change the bg color here
@@ -58,24 +58,34 @@ public class Drawing {
 
     // Problem: Draw the sierpinski triangle fractal using a stack rather than
     // a recursive function.
-    public static void fractal(Graphics g, Triangle tri) {
+    public static void fractal(Graphics g, int level, int x1, int y1, int x2, int y2, int x3, int y3) {
         ArrayStack<Triangle> stack = new ArrayStack<>();
-        stack.push(tri);
+        stack.push(new Triangle(level, x1, y1, x2, y2, x3, y3));
 
         while (!stack.isEmpty()) {
             // remove triangle from top of the stack
             Triangle t = stack.pop();
 
-            // TODO: draw triangle if its level is zero
-            // TODO: push three smaller triangles with level - 1 if its level is > 0
+            if (t.level == 0) {
+                // draw triangle if its level is zero
+                g.drawLine(t.x1, t.y1, t.x2, t.y2);
+                g.drawLine(t.x1, t.y1, t.x3, t.y3);
+                g.drawLine(t.x3, t.y3, t.x2, t.y2);
+            } else {
+                // push three smaller triangles with level - 1 if its level is > 0
 
-            // midpoint calculations from last time we did this
-            int x12 = (t.x1 + t.x2) / 2;
-            int y12 = (t.y1 + t.y2) / 2;
-            int x13 = (t.x1 + 2 * t.x3) / 3;
-            int y13 = (t.y1 + 2 * t.y3) / 3;
-            int x23 = (2 * t.x3 + t.x2) / 3;
-            int y23 = (2 * t.y3 + t.y2) / 3;
+                // midpoint calculations from last time we did this
+                int x12 = (t.x1 + t.x2) / 2;
+                int y12 = (t.y1 + t.y2) / 2;
+                int x13 = (t.x1 + t.x3) / 3;
+                int y13 = (t.y1 + t.y3) / 3;
+                int x23 = (t.x3 + t.x2) / 3;
+                int y23 = (t.y3 + t.y2) / 3;
+
+                stack.push(new Triangle(level - 1, t.x1, t.y1, x12, y12, x13, y13));
+                stack.push(new Triangle(level - 1, x12, y12, t.x2, t.y2, x23, y23));
+                stack.push(new Triangle(level - 1, x13, y13, x23, y23, t.x3, t.y3));
+            }
         }
     }
 
