@@ -1,14 +1,24 @@
 import java.util.NoSuchElementException;
 
 public class LinkedQueue<E> {
-    // TODO: data
+    private int size;
+    private Node front, back;
 
     public LinkedQueue() {
-        // TODO init
+        size = 0;
+        front = null;
+        back = null;
     }
 
     public void enqueue(E element) {
-        // TODO
+        if (isEmpty()) {
+            back = new Node(element);
+            front = back;
+        } else {
+            back.next = new Node(element);
+            back = back.next;
+        }
+        size += 1;
     }
 
     public E dequeue() {
@@ -17,9 +27,15 @@ public class LinkedQueue<E> {
             throw new NoSuchElementException();
         }
 
-        E element = ???;
+        E element = front.data;
 
-        // TODO
+        size -= 1;
+        front = front.next;
+        // not necessary unless we rely on back == null to tell us when queue
+        // is empty:
+        // if (isEmpty()) {
+        //     back = null;
+        // }
 
         return element;
     }
@@ -30,7 +46,7 @@ public class LinkedQueue<E> {
             throw new NoSuchElementException();
         }
 
-        return ???;
+        return front.data;
     }
 
     public int size() {
@@ -42,10 +58,32 @@ public class LinkedQueue<E> {
     }
 
     public void printQueue() {
-        // TODO
+        Node n = front;
+        while (n != null) {
+            System.out.print(n.data + " ");
+            n = n.next;
+        }
+        System.out.println();
     }
 
     public void clear() {
-        // TODO
+        front = null;
+        back = null;
+        size = 0;
+    }
+
+    // inner class for node
+    private class Node {
+        E data;
+        Node next;
+
+        Node() {}
+        Node(E d) {
+            data = d;
+        }
+        Node(E d, Node n) {
+            data = d;
+            next = n;
+        }
     }
 }

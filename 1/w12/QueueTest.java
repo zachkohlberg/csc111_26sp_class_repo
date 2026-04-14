@@ -1,6 +1,7 @@
 public class QueueTest {
     public static void main(String[] args) {
-        ArrayQueue<String> aq = new ArrayQueue<>();
+        // ArrayQueue<String> queue = new ArrayQueue<>();
+        LinkedQueue<String> queue = new LinkedQueue<>();
 
         // we want our data array in the following state:
         //
@@ -12,25 +13,25 @@ public class QueueTest {
 
         // move front index towards end of queue
         for (int i = 0; i < 6; i++) {
-            aq.enqueue("X");
-            aq.dequeue();
+            queue.enqueue("X");
+            queue.dequeue();
         }
 
-        aq.enqueue("A");
-        aq.enqueue("B");
-        aq.enqueue("C");
-        aq.enqueue("D");
-        aq.enqueue("E");
-        aq.enqueue("F");
-        aq.enqueue("G");
-        aq.enqueue("H");
-        aq.enqueue("I");
-        aq.enqueue("J");
-        aq.enqueue("K");
+        queue.enqueue("A");
+        queue.enqueue("B");
+        queue.enqueue("C");
+        queue.enqueue("D");
+        queue.enqueue("E");
+        queue.enqueue("F");
+        queue.enqueue("G");
+        queue.enqueue("H");
+        queue.enqueue("I");
+        queue.enqueue("J");
+        queue.enqueue("K");
 
         // queue should be in correct state
         // test the print method
 
-        aq.printQueue();
+        queue.printQueue();
     }
 }
