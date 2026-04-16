@@ -1,25 +1,72 @@
 public class BTNodeTest {
     // For an example with our regular nodes, check NodeTest from w10
     public static void main(String[] args) {
-        // if you have a BTNode(T initData) constructor then you can start with:
+        BTNode<String> root1 = makeTree1();
+        BTNode<String> root2 = makeTree2();
+
+        printTree(root1);
+        printTree(root2);
+    }
+
+    //      D
+    //     / \
+    //    /   \
+    //   A     C
+    //  / \     \
+    // B   F     G
+    //    /
+    //   E
+    //
+    // methods for creating the above tree
+
+    static BTNode<String> makeTree1() {
+        // top layer
         BTNode<String> root = new BTNode<>("D");
 
-        // TODO: create the tree shown below without introducing any more
-        // variables. Just add nodes through the root variable.
-        //
-        //      D
-        //     / \
-        //    /   \
-        //   A     C
-        //  / \     \
-        // B   F     G
-        //    /
-        //   E
+        // second layer
+        root.left = new BTNode<>("A");
+        root.right = new BTNode<>("C");
 
-        // TODO: print all of the strings stored in the nodes, again without
-        // creating any additional variables. For example, you could print the
-        // F with:
-        //
-        // System.out.println(root.left.right.data);
+        // third layer
+        root.left.left = new BTNode<>("B");
+        root.left.right = new BTNode<>("F");
+        root.right.right = new BTNode<>("G");
+
+        // fourth layer
+        root.left.right.left = new BTNode<>("E");
+
+        return root;
+    }
+
+    static BTNode<String> makeTree2() {
+        return new BTNode<>(
+            "D",
+            new BTNode<>(
+                "A",
+                new BTNode<>("B"),
+                new BTNode<>(
+                    "F",
+                    new BTNode<>("E"),
+                    null
+                )
+            ),
+            new BTNode<>(
+                "C",
+                null,
+                new BTNode<>("G")
+            )
+        );
+    }
+
+    // method for printing tree's data alphabetically
+    static void printTree(BTNode<String> root) {
+        System.out.print(root.left.data);
+        System.out.print(root.left.left.data);
+        System.out.print(root.right.data);
+        System.out.print(root.data);
+        System.out.print(root.left.right.left.data);
+        System.out.print(root.left.right.data);
+        System.out.print(root.right.right.data);
+        System.out.println();
     }
 }
