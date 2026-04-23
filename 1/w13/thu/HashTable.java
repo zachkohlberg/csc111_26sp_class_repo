@@ -5,9 +5,11 @@ public class HashTable<K, V> {
     // TODO: constructor parameters
     // - size
     // - hash function
-    public HashTable() {
+    @SuppressWarnings("unchecked")
+    public HashTable(..., int size) {
         // TODO: init hashFunction
-        // TODO: create an array of the appropriate size
+        // create an array of the appropriate size
+        data = new KeyValueNode[size];
     }
 
     public V get(K key) {
