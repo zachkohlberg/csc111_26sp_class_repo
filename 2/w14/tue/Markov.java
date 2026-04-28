@@ -17,6 +17,26 @@ public class Markov {
                 // TODO: print error message and ignore file
             }
         }
+
+        // generate new text
+
+        // to prevent excessively long text, we can cut it off after it exceeds some
+        // max length (set this to whatever value you want)
+        final int MAX_LENGTH = 100;
+
+        // TODO: choose a random start token
+        String token = startTokens.get(...);
+        String generatedText = "";
+        // loop until we reach the max length or a null next token
+        for (int i = 0; i < MAX_LENGTH && token != null; i++) {
+            // TODO: add token to the generated text
+            generatedText = ...;
+            // TODO: get the list of next tokens for token
+            LinkedList<String> nextTokenList = table...;
+            // TODO: get a new random token from the list
+            token = ...;
+        }
+        System.out.println(generatedText);
     }
 
     static int hashFunction(String s) {
@@ -47,6 +67,32 @@ public class Markov {
         // TODO: split into tokens; see Regex.java
         String[] tokens = sectionText.split(...);
 
-        // TODO: build hash table
+        // TODO: add first token to the start list
+        startTokens...;
+
+        for (int i = 1; i < tokens.length; i++) {
+            // descriptive variable names to make the rest of our code clearer
+            String currentToken = tokens[i - 1];
+            String nextToken = tokens[i];
+
+            // TODO: if currentToken isn't in the table, make a new entry
+            if (table.get(currentToken) == ???) {
+                // currentToken isn't in the table, so add it with an empty list
+                table.set(currentToken, new LinkedList<>());
+            }
+            // TODO: get the list for currentToken from the table
+            LinkedList<String> nextTokenList = table.get...;
+
+            // TODO: add nextToken to the list
+            nextTokenList...;
+        }
+
+        // descriptive variable name to make the following code clearer
+        String lastToken = tokens[tokens.length - 1];
+
+        // TODO: if lastToken isn't in the table, make a new entry
+        // TODO: get the list for lastToken
+        // TODO: add null to the list
+        // this is just like what we did in the loop above
     }
 }
